@@ -1,3 +1,4 @@
+
 # ClairCRM
 
 CRM local sans installation : ouvrez simplement `index.html` dans votre navigateur.
