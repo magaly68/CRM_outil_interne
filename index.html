@@ -1,244 +1,223 @@
-<!doctype html><html lang="fr">
+<!doctype html>
+<html lang="fr">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>ClairCRM</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="calendar.css">
-    <link rel="stylesheet" href="billing.css">
-    <link rel="stylesheet" href="enhancements.css">
-    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="calendar.css" />
+    <link rel="stylesheet" href="billing.css" />
+    <link rel="stylesheet" href="enhancements.css" />
+    <link rel="stylesheet" href="navigation.css" />
   </head>
   <body>
-
-<aside class="sidebar">
-  <a class="brand">
-    <span class="brand-mark">C</span>
-     Clair
-     <span>CRM</span>
-    </a>
-    <nav>
-      <a class="nav-link active" data-view="dashboard">
-        ▦ 
-        <span>Tableau de bord</span>
+    <aside class="sidebar">
+      <a class="brand">
+        <span class="brand-mark">C</span>
+        Clair
+        <span>CRM</span>
       </a>
-      
-      <a class="nav-link" data-view="contacts">
-        ♙
-         <span>Contacts</span>
+      <nav>
+        <a class="nav-link active" data-view="dashboard">
+          ▦
+          <span>Tableau de bord</span>
         </a>
-        
+
+        <a class="nav-link" data-view="contacts">
+          ♙
+          <span>Contacts</span>
+        </a>
+
         <a class="nav-link" data-view="opportunities">
           ◇
-           <span>Opportunités</span>
-          </a>
-          
-          <a class="nav-link" data-view="projects">
-            ▤ 
-            <span>Projets</span>
-          </a>
-          
-          <a class="nav-link" data-view="billing">
-            € 
-            <span>Devis & facturation</span>
-          </a>
-          
-          <a class="nav-link" data-view="tasks">
-            ✓ 
-            <span>Tâches</span>
-            <b id="taskBadge">0</b>
-          </a>
-        </nav>
-        
-        <div class="sidebar-footer">
-          <div class="avatar">MA</div>
-          <div>
-            <strong>Magaly</strong>
-            <small>Administratrice</small>
-          </div>
+          <span>Opportunités</span>
+        </a>
+
+        <a class="nav-link" data-view="projects">
+          ▤
+          <span>Projets</span>
+        </a>
+
+        <a class="nav-link" data-view="billing">
+          €
+          <span>Devis & facturation</span>
+        </a>
+
+        <a class="nav-link" data-view="tasks">
+          ✓
+          <span>Tâches</span>
+          <b id="taskBadge">0</b>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="avatar">MA</div>
+        <div>
+          <strong>Magaly</strong>
+          <small>Administratrice</small>
         </div>
-      </aside>
+      </div>
+    </aside>
 
-<main>
-  
-  <header class="topbar">
-    <div>
-      <p>Mardi 14 juillet</p>
-      <h1 id="pageTitle">Bonjour, Magaly</h1>
-    </div>
-    
-    <button class="primary" id="quickAdd">
-      + Ajouter
-    </button>
-  </header>
+    <main>
+      <header class="topbar">
+        <div>
+          <p>Mardi 14 juillet</p>
+          <h1 id="pageTitle">Bonjour, Magaly</h1>
+        </div>
 
-<section id="dashboard" class="view active">
-  <div class="hero"><div>
-    <p>VUE D’ENSEMBLE</p>
-    <h2>Votre activité commerciale,<br>en un regard.</h2>
-  </div>
-  
-  <div class="hero-orb">↗</div>
-</div>
+        <button class="primary" id="quickAdd">+ Ajouter</button>
+      </header>
 
-<div class="metrics" id="metrics"></div>
+      <section id="dashboard" class="view active">
+        <div class="hero">
+          <div>
+            <p>VUE D’ENSEMBLE</p>
+            <h2>Votre activité commerciale,<br />en un regard.</h2>
+          </div>
 
-<div class="dashboard-grid">
-  <article class="panel">
-    <div class="panel-head"><div>
-      <p class="label">
-        PIPELINE
-      </p>
-      <h3>Opportunités en cours</h3>
-    </div>
-  </div>
-  
-  <div id="dashboardOpportunities"></div>
-</article>
+          <div class="hero-orb">↗</div>
+        </div>
 
-<article class="panel">
-  <div class="panel-head"><div>
-    <p class="label">
-      À FAIRE
-    </p>
-    <h3>Prochaines tâches</h3>
-  </div>
-</div>
+        <div class="metrics" id="metrics"></div>
 
-<div id="dashboardTasks"></div>
-</article>
-</div>
-</section>
+        <div class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="label">PIPELINE</p>
+                <h3>Opportunités en cours</h3>
+              </div>
+            </div>
 
-<section id="contacts" class="view">
-  <div class="section-head"><div>
-    <p class="label">
-      RÉPERTOIRE
-    </p>
-    <h2>Contacts</h2>
-  </div>
-  
-  <button class="primary" data-add="contact">
-    + Nouveau contact
-  </button>
-</div>
+            <div id="dashboardOpportunities"></div>
+          </article>
 
-<div class="toolbar">
-  <input id="contactSearch" type="search" placeholder="Rechercher un contact…">
-  <span id="contactCount"></span>
-</div>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="label">À FAIRE</p>
+                <h3>Prochaines tâches</h3>
+              </div>
+            </div>
 
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th>CONTACT</th>
-        <th>ENTREPRISE</th>
-        <th>EMAIL</th>
-        <th>TÉLÉPHONE</th>
-        <th>notes</th>
-      </tr>
-    </thead>
-    <tbody id="contactsTable"></tbody>
-  </table>
-</div>
-</section>
+            <div id="dashboardTasks"></div>
+          </article>
+        </div>
+      </section>
 
-<section id="opportunities" class="view">
-  <div class="section-head"><div>
-    <p class="label">
-      PIPELINE
-    </p>
-    <h2>Opportunités</h2>
-  </div>
-  
-  <button class="primary" data-add="opportunity">
-    + Nouvelle opportunité
-  </button>
-</div>
+      <section id="contacts" class="view">
+        <div class="section-head">
+          <div>
+            <p class="label">RÉPERTOIRE</p>
+            <h2>Contacts</h2>
+          </div>
 
-<div class="pipeline" id="pipeline"></div>
-</section>
+          <button class="primary" data-add="contact">+ Nouveau contact</button>
+        </div>
 
-<section id="projects" class="view">
-  <div class="section-head"><div>
-    <p class="label">EXÉCUTION</p>
-    <h2>Projets et sous-tâches</h2>
-  </div>
-  <button class="primary" data-add="project">
-    + Nouveau projet
-  </button>
-</div>
+        <div class="toolbar">
+          <input
+            id="contactSearch"
+            type="search"
+            placeholder="Rechercher un contact…"
+          />
+          <span id="contactCount"></span>
+        </div>
 
-<div class="project-layout"><div class="project-list" id="projectList">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>CONTACT</th>
+                <th>ENTREPRISE</th>
+                <th>EMAIL</th>
+                <th>TÉLÉPHONE</th>
+                <th>notes</th>
+              </tr>
+            </thead>
+            <tbody id="contactsTable"></tbody>
+          </table>
+        </div>
+      </section>
 
-</div>
+      <section id="opportunities" class="view">
+        <div class="section-head">
+          <div>
+            <p class="label">PIPELINE</p>
+            <h2>Opportunités</h2>
+          </div>
 
-<article class="project-detail">
-  <div id="projectDetail"></div>
-  
-  <button class="secondary" id="addSubtask">
-    + Ajouter une sous-tâche
-  </button>
-</article>
-</div>
-</section>
+          <button class="primary" data-add="opportunity">
+            + Nouvelle opportunité
+          </button>
+        </div>
 
-<section id="tasks" class="view"><div class="section-head">
-  <div>
-    <p class="label">
-      ORGANISATION
-    </p>
-    <h2>Tâches</h2>
-  </div>
-  <button class="primary" data-add="task">
-    + Nouvelle tâche
-  </button>
-</div>
+        <div class="pipeline" id="pipeline"></div>
+      </section>
 
-<div class="task-filters">
-  <button class="filter active" data-filter="all">
-    Toutes
-  </button>
-  
-  <button class="filter" data-filter="today">
-    Aujourd’hui
-  </button>
-  
-  <button class="filter" data-filter="late">
-    En retard
-  </button>
-</div>
+      <section id="projects" class="view">
+        <div class="section-head">
+          <div>
+            <p class="label">EXÉCUTION</p>
+            <h2>Projets et sous-tâches</h2>
+          </div>
+          <button class="primary" data-add="project">+ Nouveau projet</button>
+        </div>
 
-<div class="task-list" id="taskList"></div>
-</section>
-</main>
+        <div class="project-layout">
+          <div class="project-list" id="projectList"></div>
 
-<dialog id="formDialog">
-  <form method="dialog" id="entityForm">
-    <div class="dialog-head">
-      <h2 id="dialogTitle"></h2>
-      <button class="close" value="cancel">
-        ×
-      </button>
-    </div>
-    
-    <div id="formFields" class="form-fields"></div>
-    <div class="form-actions">
-      <button class="secondary" value="cancel">
-        Annuler
-      </button>
-      
-      <button class="primary">
-        Enregistrer
-      </button>
-    </div>
-  </form>
-</dialog>
-<script src="app.js"></script>
-<script src="calendar.js"></script>
-<script src="billing.js"></script>
-<script src="enhancements.js"></script>
-</body>
+          <article class="project-detail">
+            <div id="projectDetail"></div>
+
+            <button class="secondary" id="addSubtask">
+              + Ajouter une sous-tâche
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section id="tasks" class="view">
+        <div class="section-head">
+          <div>
+            <p class="label">ORGANISATION</p>
+            <h2>Tâches</h2>
+          </div>
+          <button class="primary" data-add="task">+ Nouvelle tâche</button>
+        </div>
+
+        <div class="task-filters">
+          <button class="filter active" data-filter="all">Toutes</button>
+
+          <button class="filter" data-filter="today">Aujourd’hui</button>
+
+          <button class="filter" data-filter="late">En retard</button>
+        </div>
+
+        <div class="task-list" id="taskList"></div>
+      </section>
+    </main>
+
+    <dialog id="formDialog">
+      <form method="dialog" id="entityForm">
+        <div class="dialog-head">
+          <h2 id="dialogTitle"></h2>
+          <button class="close" value="cancel">×</button>
+        </div>
+
+        <div id="formFields" class="form-fields"></div>
+        <div class="form-actions">
+          <button class="secondary" value="cancel">Annuler</button>
+
+          <button class="primary">Enregistrer</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+    <script src="calendar.js"></script>
+    <script src="billing.js"></script>
+    <script src="enhancements.js"></script>
+  </body>
 </html>
