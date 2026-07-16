@@ -231,6 +231,7 @@ main {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 20px;
+  align-items: start;
 }
 
 .panel {

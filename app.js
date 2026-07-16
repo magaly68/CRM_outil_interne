@@ -22,16 +22,16 @@ const seed = {
     {
       id: 1,
       title: "Refonte site vitrine",
-      contact: "Sophie Martin",
-      company: "Studio M.",
+      contact: "",
+      company: "",
       amount: 4800,
       stage: "Qualification",
     },
     {
       id: 2,
       title: "Accompagnement SEO",
-      contact: "Thomas Bernard",
-      company: "Atelier Nord",
+      contact: "",
+      company: "",
       amount: 3200,
       stage: "Proposition",
     },
@@ -39,7 +39,7 @@ const seed = {
   tasks: [
     {
       id: 1,
-      title: "Préparer la proposition pour Atelier Nord",
+      title: "Préparer la proposition",
       date: today,
       time: "09:00",
       type: "Opportunité",
@@ -47,7 +47,7 @@ const seed = {
     },
     {
       id: 2,
-      title: "Appeler Sophie Martin",
+      title: "Appeler",
       date: today,
       time: "14:00",
       type: "Relance",
@@ -75,6 +75,15 @@ const save = () => {
     new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" }).format(
       new Date(d + "T12:00"),
     );
+
+currentDate.textContent = new Intl.DateTimeFormat("fr-FR", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+})
+  .format(new Date())
+  .toUpperCase();
+
 function dashboard() {
   const open = db.opportunities.filter((o) => o.stage !== "Gagnée"),
     total = open.reduce((a, o) => a + Number(o.amount), 0);

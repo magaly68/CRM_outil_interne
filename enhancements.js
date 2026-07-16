@@ -14,9 +14,9 @@
     root.insertBefore(section, document.getElementById("tasks"));
     return section;
   };
-  const clients = makeView("clients", "Clients", "â™§");
-  const kanban = makeView("kanban", "Kanban", "â–¥");
-  const insights = makeView("insights", "Indicateurs", "â—”");
+  const clients = makeView("clients", "Clients", "●");
+  const kanban = makeView("kanban", "Kanban", "▦");
+  const insights = makeView("insights", "Indicateurs", "◌");
   const esc = (value) =>
     String(value || "").replace(
       /[&<>"']/g,
@@ -42,7 +42,7 @@
       id: 1,
       contact: 1,
       type: "Appel",
-      text: "Premier Ã©change sur les besoins du projet.",
+      text: "Premier échange sur les besoins du projet.",
       date: enhancementToday,
     },
   ];
@@ -59,12 +59,12 @@
           .map((x) => x[0])
           .join(
             "",
-          )}</div><div><h3>${esc(c.name)}</h3><small>${esc(c.company)}</small></div></div><p>${esc(c.email)} Â· ${esc(c.phone)}</p><div class="client-summary"><span>${related.length} opportunitÃ©(s)</span><span>${history.length} activitÃ©(s)</span></div><div class="activity-list">${history.map((a) => `<div><strong>${a.type}</strong><small>${a.text} Â· ${a.date}</small></div>`).join("") || "<small>Aucune activitÃ© enregistrÃ©e.</small>"}</div><button class="secondary add-activity" data-contact="${c.id}">+ Ajouter une note</button></article>`;
+          )}</div><div><h3>${esc(c.name)}</h3><small>${esc(c.company)}</small></div></div><p>${esc(c.email)} · ${esc(c.phone)}</p><div class="client-summary"><span>${related.length} opportunité(s)</span><span>${history.length} activité(s)</span></div><div class="activity-list">${history.map((a) => `<div><strong>${a.type}</strong><small>${a.text} · ${a.date}</small></div>`).join("") || "<small>Aucune activité enregistrée.</small>"}</div><button class="secondary add-activity" data-contact="${c.id}">+ Ajouter une note</button></article>`;
       })
       .join("")}</div>`;
   }
   function drawKanban() {
-    kanban.innerHTML = `<div class="section-head"><div><p class="label">VISUALISATION</p><h2>Pipeline Kanban</h2></div></div><p class="help">Utilisez les boutons pour faire avancer une opportunitÃ© dans votre pipeline.</p><div class="pipeline">${stages
+    kanban.innerHTML = `<div class="section-head"><div><p class="label">VISUALISATION</p><h2>Pipeline Kanban</h2></div></div><p class="help">Utilisez les boutons pour faire avancer une opportunité dans votre pipeline.</p><div class="pipeline">${stages
       .map(
         (stage, index) =>
           `<div class="stage-column"><div class="stage-title">${stage}<span>${db.opportunities.filter((o) => o.stage === stage).length}</span></div>${
@@ -72,22 +72,22 @@
               .filter((o) => o.stage === stage)
               .map(
                 (o) =>
-                  `<article class="deal-card"><strong>${esc(o.title)}</strong><p>${esc(o.company)}</p><div class="deal-footer"><span>${currency(o.amount)}</span>${index < stages.length - 1 ? `<button class="secondary move-deal" data-id="${o.id}" data-stage="${stages[index + 1]}">Avancer â†’</button>` : ""}</div></article>`,
+                  `<article class="deal-card"><strong>${esc(o.title)}</strong><p>${esc(o.company)}</p><div class="deal-footer"><span>${currency(o.amount)}</span>${index < stages.length - 1 ? `<button class="secondary move-deal" data-id="${o.id}" data-stage="${stages[index + 1]}">Avancer →</button>` : ""}</div></article>`,
               )
-              .join("") || '<div class="empty">Aucune opportunitÃ©</div>'
+              .join("") || '<div class="empty">Aucune opportunité</div>'
           }</div>`,
       )
       .join("")}</div>`;
   }
   function drawInsights() {
     const total = db.opportunities.reduce((s, o) => s + Number(o.amount), 0),
-      won = db.opportunities.filter((o) => o.stage === "GagnÃ©e"),
+      won = db.opportunities.filter((o) => o.stage === "Gagnée"),
       rate = db.opportunities.length
         ? Math.round((won.length / db.opportunities.length) * 100)
         : 0;
     const openTasks = db.tasks.filter((t) => !t.done),
       late = openTasks.filter((t) => t.date < enhancementToday).length;
-    insights.innerHTML = `<div class="section-head"><div><p class="label">PILOTAGE</p><h2>Indicateurs clÃ©s</h2></div><button class="secondary" id="exportData">Exporter les donnÃ©es CSV</button></div><div class="insight-grid"><div class="metric"><p>Pipeline total</p><strong>${currency(total)}</strong></div><div class="metric"><p>Taux de conversion</p><strong>${rate}%</strong></div><div class="metric"><p>TÃ¢ches en retard</p><strong>${late}</strong></div><div class="metric"><p>Projets actifs</p><strong>${db.projects.filter((p) => p.status === "En cours").length}</strong></div></div><article class="panel"><p class="label">LECTURE RAPIDE</p><h3>PrioritÃ©s dâ€™action</h3><ul class="insight-list"><li>${late ? `${late} tÃ¢che(s) en retard Ã  traiter.` : "Aucune tÃ¢che en retard."}</li><li>${db.opportunities.filter((o) => o.stage === "Proposition").length} proposition(s) Ã  relancer.</li><li>${won.length} opportunitÃ©(s) gagnÃ©e(s) dans le pipeline.</li></ul></article>`;
+    insights.innerHTML = `<div class="section-head"><div><p class="label">PILOTAGE</p><h2>Indicateurs clés</h2></div><button class="secondary" id="exportData">Exporter les données CSV</button></div><div class="insight-grid"><div class="metric"><p>Pipeline total</p><strong>${currency(total)}</strong></div><div class="metric"><p>Taux de conversion</p><strong>${rate}%</strong></div><div class="metric"><p>Tâches en retard</p><strong>${late}</strong></div><div class="metric"><p>Projets actifs</p><strong>${db.projects.filter((p) => p.status === "En cours").length}</strong></div></div><article class="panel"><p class="label">LECTURE RAPIDE</p><h3>Priorités d’action</h3><ul class="insight-list"><li>${late ? `${late} tâche(s) en retard à traiter.` : "Aucune tâche en retard."}</li><li>${db.opportunities.filter((o) => o.stage === "Proposition").length} proposition(s) à relancer.</li><li>${won.length} opportunité(s) gagnée(s) dans le pipeline.</li></ul></article>`;
   }
   function reminder() {
     const late = db.tasks.filter(
@@ -99,7 +99,7 @@
     const bar = document.createElement("div");
     bar.id = "reminderBar";
     bar.className = "reminder-bar";
-    bar.innerHTML = `<strong>Relance nÃ©cessaire :</strong> ${late} tÃ¢che(s) en retard. <button data-view="tasks">Voir les tÃ¢ches</button>`;
+    bar.innerHTML = `<strong>Relance nécessaire :</strong> ${late} tâche(s) en retard. <button data-view="tasks">Voir les tâches</button>`;
     document.querySelector(".topbar").after(bar);
   }
   function exportCsv() {
@@ -107,7 +107,7 @@
       ["Type", "Nom", "Entreprise", "Montant", "Statut"],
       ...db.contacts.map((c) => ["Contact", c.name, c.company, "", ""]),
       ...db.opportunities.map((o) => [
-        "OpportunitÃ©",
+        "Opportunité",
         o.title,
         o.company,
         o.amount,
@@ -134,13 +134,13 @@
   function pdf() {
     const w = window.open("", "_blank");
     w.document.write(
-      `<!doctype html><html><head><title>Document commercial</title><style>body{font:16px Arial;padding:45px;color:#172539}h1{color:#157a67}table{width:100%;border-collapse:collapse;margin-top:25px}td,th{border-bottom:1px solid #ddd;padding:12px;text-align:left}.total{font-size:22px;font-weight:bold;text-align:right;margin-top:25px}</style></head><body><h1>ClairCRM - Document commercial</h1><p>Date : ${enhancementToday}</p><table><tr><th>Objet</th><th>Client</th><th>Montant HT</th></tr>${db.opportunities.map((o) => `<tr><td>${esc(o.title)}</td><td>${esc(o.company)}</td><td>${currency(o.amount)}</td></tr>`).join("")}</table><p class="total">Total : ${currency(db.opportunities.reduce((s, o) => s + Number(o.amount), 0))}</p><p>Document gÃ©nÃ©rÃ© depuis ClairCRM.</p></body></html>`,
+      `<!doctype html><html><head><title>Document commercial</title><style>body{font:16px Arial;padding:45px;color:#172539}h1{color:#157a67}table{width:100%;border-collapse:collapse;margin-top:25px}td,th{border-bottom:1px solid #ddd;padding:12px;text-align:left}.total{font-size:22px;font-weight:bold;text-align:right;margin-top:25px}</style></head><body><h1>ClairCRM - Document commercial</h1><p>Date : ${enhancementToday}</p><table><tr><th>Objet</th><th>Client</th><th>Montant HT</th></tr>${db.opportunities.map((o) => `<tr><td>${esc(o.title)}</td><td>${esc(o.company)}</td><td>${currency(o.amount)}</td></tr>`).join("")}</table><p class="total">Total : ${currency(db.opportunities.reduce((s, o) => s + Number(o.amount), 0))}</p><p>Document généré depuis ClairCRM.</p></body></html>`,
     );
     w.document.close();
     w.print();
   }
   function note(contact) {
-    const text = prompt("Note ou compte-rendu Ã  ajouter :");
+    const text = prompt("Note ou compte-rendu à ajouter :");
     if (!text) return;
     activities.push({
       id: Date.now(),
@@ -169,7 +169,7 @@
   const search = document.createElement("input");
   search.id = "globalSearch";
   search.type = "search";
-  search.placeholder = "Rechercher partoutâ€¦";
+  search.placeholder = "Rechercher partout…";
   document.querySelector(".topbar").prepend(search);
   search.addEventListener("input", () => {
     const q = search.value.toLowerCase();
@@ -188,7 +188,7 @@
       const b = document.createElement("button");
       b.id = "createPdf";
       b.className = "secondary";
-      b.textContent = "GÃ©nÃ©rer PDF";
+      b.textContent = "Générer PDF";
       bill.querySelector(".section-head")?.append(b);
     }
   });

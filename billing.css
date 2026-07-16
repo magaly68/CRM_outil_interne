@@ -41,6 +41,43 @@
   align-items: center;
   gap: 7px;
 }
+
+.document-import {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 0 20px;
+}
+
+.document-import h3 {
+  margin: 0;
+}
+
+.document-import p:not(.label),
+.import-notice {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.document-link {
+  display: block;
+  margin-top: 6px;
+  color: var(--green);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.document-link:hover {
+  text-decoration: underline;
+}
+
+.billing-import-help {
+  margin: -14px 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
 .danger {
   color: #b84a4a !important;
 }
@@ -54,5 +91,12 @@
   }
   .billing-create-actions {
     margin-top: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .document-import {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
